@@ -632,6 +632,17 @@
             max-width: 800px;
             margin: 0 auto;
         }
+
+        .smooth-image {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .smooth-image.loaded {
+            opacity: 1;
+        }
+        .gallery .smooth-image {
+            transition-delay: calc(0.1s * var(--index));
+        }
     </style>
 </head>
 <body>
@@ -662,7 +673,7 @@
             <p>"Искусство кино в каждом кадре и слове"</p>
             <div class="image-container">
                 <div class="image-wrapper">
-                    <img src="images/demid_winter_portrait.jpg" alt="Демид Полухин Зимний Портрет" class="hero-image">
+                    <img src="images/demid_winter_portrait.jpg" alt="Демид Полухин Зимний Портрет" class="hero-image smooth-image" onload="this.classList.add('loaded')" style="--index: 1;">
                 </div>
             </div>
         </section>
@@ -685,14 +696,14 @@
             <div class="container">
                 <h2>ФИЛЬМЫ</h2>
                 <div class="gallery">
-                    <div class="gallery-item" data-title="Wake Up (2024) - Короткометражный фильм">
-                        <img src="images/wake_up_film.jpg" alt="Wake Up - Короткометражный фильм" loading="lazy">
+                    <div class="gallery-item" data-title="Wake Up (2024) - Короткометражный фильм" style="--index: 1;">
+                        <img src="images/wake_up_film.jpg" alt="Wake Up - Короткометражный фильм" class="smooth-image" onload="this.classList.add('loaded')" loading="lazy">
                     </div>
-                    <div class="gallery-item placeholder development" data-title="В разработке (2025)">
+                    <div class="gallery-item placeholder development" data-title="В разработке (2025)" style="--index: 2;">
                         <div class="icon">🎬</div>
                         <div class="text">В разработке</div>
                     </div>
-                    <div class="gallery-item placeholder announcement" data-title="Ожидайте анонс нового проекта">
+                    <div class="gallery-item placeholder announcement" data-title="Ожидайте анонс нового проекта" style="--index: 3;">
                         <div class="icon">⏳</div>
                         <div class="text">Ожидайте анонс</div>
                     </div>
@@ -729,26 +740,26 @@
             <div class="container">
                 <h2>ФОТОГАЛЕРЕЯ</h2>
                 <div class="gallery">
-                    <div class="gallery-item vertical">
-                        <img src="./images/photo1.jpg" alt="Фото 1" loading="lazy" onerror="console.error('Ошибка загрузки фото 1')">
+                    <div class="gallery-item vertical" style="--index: 1;">
+                        <img src="./images/photo1.jpg" alt="Фото 1" class="smooth-image" onload="this.classList.add('loaded')" loading="lazy" onerror="console.error('Ошибка загрузки фото 1')">
                     </div>
-                    <div class="gallery-item vertical">
-                        <img src="images/photo2.jpg" alt="Фото 2" loading="lazy">
+                    <div class="gallery-item vertical" style="--index: 2;">
+                        <img src="images/photo2.jpg" alt="Фото 2" class="smooth-image" onload="this.classList.add('loaded')" loading="lazy">
                     </div>
-                    <div class="gallery-item vertical">
-                        <img src="images/photo3.jpg" alt="Фото 3" loading="lazy">
+                    <div class="gallery-item vertical" style="--index: 3;">
+                        <img src="images/photo3.jpg" alt="Фото 3" class="smooth-image" onload="this.classList.add('loaded')" loading="lazy">
                     </div>
-                    <div class="gallery-item vertical">
-                        <img src="images/photo4.jpg" alt="Фото 4" loading="lazy">
+                    <div class="gallery-item vertical" style="--index: 4;">
+                        <img src="images/photo4.jpg" alt="Фото 4" class="smooth-image" onload="this.classList.add('loaded')" loading="lazy">
                     </div>
-                    <div class="gallery-item vertical">
-                        <img src="images/photo5.jpg" alt="Фото 5" loading="lazy">
+                    <div class="gallery-item vertical" style="--index: 5;">
+                        <img src="images/photo5.jpg" alt="Фото 5" class="smooth-image" onload="this.classList.add('loaded')" loading="lazy">
                     </div>
-                    <div class="gallery-item vertical">
-                        <img src="images/photo6.jpg" alt="Фото 6" loading="lazy">
+                    <div class="gallery-item vertical" style="--index: 6;">
+                        <img src="images/photo6.jpg" alt="Фото 6" class="smooth-image" onload="this.classList.add('loaded')" loading="lazy">
                     </div>
-                    <div class="gallery-item horizontal-large">
-                        <img src="./images/photo7.jpg" alt="Фото 7" loading="lazy" onerror="console.error('Ошибка загрузки фото 7')">
+                    <div class="gallery-item horizontal-large" style="--index: 7;">
+                        <img src="./images/photo7.jpg" alt="Фото 7" class="smooth-image" onload="this.classList.add('loaded')" loading="lazy" onerror="console.error('Ошибка загрузки фото 7')">
                     </div>
                 </div>
             </div>
@@ -843,10 +854,11 @@
             }, observerOptions);
 
             // Apply animations to gallery items
-            document.querySelectorAll('.gallery-item').forEach(el => {
+            document.querySelectorAll('.gallery-item').forEach((el, index) => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(50px)';
                 observer.observe(el);
+                el.style.setProperty('--index', index + 1);
             });
         });
     </script>
