@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Демид Полухин - режиссер, сценарист и актер. Официальный сайт с портфолио работ, фильмами и фотогалереей.">
+    <meta name="keywords" content="Демид Полухин, режиссер, сценарист, актер, фильмы, Wake Up">
+    <meta name="author" content="Демид Полухин">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="DEMID POLUKHIN - Официальный сайт">
+    <meta property="og:description" content="Демид Полухин - режиссер, сценарист и актер. Официальный сайт с портфолио работ, фильмами и фотогалереей.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://demidpolukhin.ru/">
+    <meta property="og:image" content="images/demid_winter_portrait.jpg">
+    <title>DEMID POLUKHIN - Официальный сайт</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="images/demid_winter_portrait.jpg">
+    <style>
+        :root {
+            --primary-bg: #000;
+            --primary-text: #fff;
+            --accent-bg: rgba(255,255,255,0.05);
+            --hover-bg: rgba(255,255,255,0.1);
+            --transition-default: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --border-radius: 10px;
+            --shadow-default: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: var(--transition-default);
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--primary-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* Header and Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--primary-text);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:not(.btn)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-text);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f0f0f0;
+        }
+
+        .nav-links a:not(.btn):hover::after {
+            width: 100%;
+        }
+
+        .btn {
+            background-color: transparent;
+            border: 2px solid var(--primary-text);
+            padding: 8px 20px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 0.85em;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-text);
+            color: var(--primary-bg) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+            perspective: 1000px;
+            padding: 20px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, #333 0%, #000 70%);
+            z-index: -1;
+            transform: translateZ(-10px);
+        }
+
+        .hero h1 {
+            font-size: 80px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: fadeInUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(255,255,255,0.3);
+        }
+
+        .hero p {
+            font-size: 24px;
+            max-width: 600px;
+            text-align: center;
+            margin-bottom: 40px;
+            font-style: italic;
+            opacity: 0.8;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .image-container {
+            position: relative;
+            height: 55vh;
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .image-wrapper {
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: var(--shadow-default);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: appear 1.8s ease-out;
+            aspect-ratio: 1/1;
+        }
+        
+        .image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #444, #111);
+            z-index: -1;
+        }
+        
+        .image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            pointer-events: none;
+        }
+
+        .image-wrapper:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 25%;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .image-wrapper:hover .hero-image {
+            transform: scale(1.04);
+        }
+
+        @keyframes appear {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about {
+            padding: 100px 0;
+        }
+
+        .about h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .gallery-section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .gallery-section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            min-height: 250px;
+        }
+
+        .gallery-item.vertical {
+            grid-row: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: attr(data-title);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            color: var(--primary-text);
+            font-size: 18px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            transform: translateY(0);
+        }
+
+        .gallery-item.placeholder {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            transition: all 0.4s ease;
+        }
+        
+        .gallery-item.placeholder:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-item.placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+        
+        .gallery-item.placeholder .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            opacity: 0.7;
+            z-index: 2;
+        }
+        
+        .gallery-item.placeholder .text {
+            font-size: 18px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            z-index: 2;
+        }
+        
+        .gallery-item.placeholder.development {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+        }
+        
+        .gallery-item.placeholder.announcement {
+            background: linear-gradient(135deg, #111 0%, #222 100%);
+        }
+
+        .upcoming-projects {
+            margin-top: 60px;
+            text-align: center;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .upcoming-projects:hover {
+            transform: translateY(-5px);
+        }
+        
+        .upcoming-projects h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .upcoming-projects p {
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        .products {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .products h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .awards-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding-bottom: 20px;
+        }
+
+        .award-item {
+            text-align: center;
+            padding: 30px;
+            background: var(--accent-bg);
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .award-item h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .award-item p {
+            opacity: 0.7;
+        }
+
+        .carousel-nav {
+            display: none;
+        }
+
+        .prev, .next {
+            display: none;
+        }
+
+        footer {
+            padding: 20px 0;
+            text-align: right;
+        }
+
+        footer a:hover span:last-child {
+            transform: scaleX(1);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--primary-text);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 50px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+                max-width: 400px;
+            }
+            
+            .image-wrapper {
+                max-width: 350px;
+            }
+            
+            .image-container {
+                height: 45vh;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-item.vertical {
+                grid-column: span 2;
+                grid-row: auto;
+                height: 400px;
+            }
+            
+            .gallery-item.horizontal-large {
+                height: 300px;
+                max-width: 100%;
+            }
+            
+            .gallery-item {
+                min-height: 250px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .about-text {
+                margin-bottom: 10px;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 40px;
+                transition: right 0.5s ease;
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+
+            .awards-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero p {
+                max-width: 300px;
+            }
+            
+            .image-wrapper {
+                max-width: 280px;
+            }
+            
+            .image-container {
+                height: 40vh;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item.vertical {
+                grid-column: auto;
+                height: 500px;
+            }
+            
+            .gallery-item.horizontal-large {
+                height: 300px;
+            }
+            
+            .gallery-item {
+                min-height: 300px;
+            }
+            
+            .about h2 {
+                font-size: 28px;
+            }
+            
+            .about-text p {
+                font-size: 15px;
+                line-height: 1.5;
+            }
+            
+            .nav-links {
+                gap: 15px;
+                width: 85%;
+            }
+        }
+        
+        .gallery-item.horizontal-large {
+            grid-column: 1 / -1;
+            height: 400px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo" aria-label="Логотип">DP</div>
+                <div class="menu-toggle" id="mobile-menu" aria-label="Открыть меню" role="button" tabindex="0">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="nav-links" id="nav-links">
+                    <a href="#home">ГЛАВНАЯ</a>
+                    <a href="#about">ОБО МНЕ</a>
+                    <a href="#films">ФИЛЬМЫ</a>
+                    <a href="#awards">ДОСТИЖЕНИЯ</a>
+                    <a href="#photo-gallery">ФОТОГАЛЕРЕЯ</a>
+                    <a href="#contacts" class="btn">КОНТАКТЫ</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>DEMID POLUKHIN</h1>
+            <p>"Искусство кино в каждом кадре и слове"</p>
+            <div class="image-container">
+                <div class="image-wrapper">
+                    <img src="images/demid_winter_portrait.jpg" alt="Демид Полухин Зимний Портрет" class="hero-image">
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2>ОБО МНЕ</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Я, Демид Полухин — режиссер, сценарист и актер. Мой творческий путь — это постоянный поиск новых форм самовыражения через кино. Создавая свои работы, я стремлюсь к тому, чтобы каждая история находила эмоциональный отклик у зрителя. Мой авторский почерк проявляется в особом внимании к деталям и глубине повествования.</p>
+                    </div>
+                    <div class="about-text">
+                        <p>Я активно развиваю свой стиль, экспериментируя с различными жанрами и форматами кино. Как актер я стараюсь раскрывать разные грани своего таланта в каждой новой роли. Моя цель — создавать кинопроизведения, которые не только развлекают, но и заставляют задуматься о важных вещах.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="films" class="gallery-section">
+            <div class="container">
+                <h2>ФИЛЬМЫ</h2>
+                <div class="gallery">
+                    <div class="gallery-item" data-title="Wake Up (2024) - Короткометражный фильм">
+                        <img src="images/wake_up_film.jpg" alt="Wake Up - Короткометражный фильм" loading="lazy">
+                    </div>
+                    <div class="gallery-item placeholder development" data-title="В разработке (2025)">
+                        <div class="icon">🎬</div>
+                        <div class="text">В разработке</div>
+                    </div>
+                    <div class="gallery-item placeholder announcement" data-title="Ожидайте анонс нового проекта">
+                        <div class="icon">⏳</div>
+                        <div class="text">Ожидайте анонс</div>
+                    </div>
+                </div>
+                
+                <div class="upcoming-projects">
+                    <h3>Следите за обновлениями</h3>
+                    <p>Сейчас я работаю над несколькими новыми проектами, которые будут представлены в ближайшее время. Подписывайтесь на мои социальные сети, чтобы не пропустить премьеры.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="awards" class="products">
+            <div class="container">
+                <h2>ДОСТИЖЕНИЯ И НАВЫКИ</h2>
+                <div class="awards-section">
+                    <article class="award-item">
+                        <h3>Режиссура</h3>
+                        <p>Я создаю художественные и документальные фильмы, уделяя особое внимание работе с актерами и визуальному языку</p>
+                    </article>
+                    <article class="award-item">
+                        <h3>Сценарное мастерство</h3>
+                        <p>Пишу оригинальные сценарии и адаптирую литературные произведения, стремясь к глубине и аутентичности</p>
+                    </article>
+                    <article class="award-item">
+                        <h3>Актерское искусство</h3>
+                        <p>Исполняю разноплановые роли в кино и театральных постановках, постоянно совершенствуя свое мастерство</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="photo-gallery" class="gallery-section">
+            <div class="container">
+                <h2>ФОТОГАЛЕРЕЯ</h2>
+                <div class="gallery">
+                    <div class="gallery-item vertical">
+                        <img src="images/photo1.JPG" alt="Фото 1" loading="lazy">
+                    </div>
+                    <div class="gallery-item vertical">
+                        <img src="images/photo2.jpg" alt="Фото 2" loading="lazy">
+                    </div>
+                    <div class="gallery-item vertical">
+                        <img src="images/photo3.jpg" alt="Фото 3" loading="lazy">
+                    </div>
+                    <div class="gallery-item vertical">
+                        <img src="images/photo4.jpg" alt="Фото 4" loading="lazy">
+                    </div>
+                    <div class="gallery-item vertical">
+                        <img src="images/photo5.jpg" alt="Фото 5" loading="lazy">
+                    </div>
+                    <div class="gallery-item vertical">
+                        <img src="images/photo6.jpg" alt="Фото 6" loading="lazy">
+                    </div>
+                    <div class="gallery-item horizontal-large">
+                        <img src="images/photo7.JPG" alt="Фото 7" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacts" class="gallery-section">
+            <div class="container">
+                <h2>КОНТАКТЫ</h2>
+                <div class="upcoming-projects">
+                    <h3>Мой VK</h3>
+                    <div class="social-links" style="display: flex; justify-content: center; margin-top: 20px;">
+                        <a href="https://vk.com/tagilloff" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background-color: transparent; border: 2px solid var(--primary-text); border-radius: 50%; transition: var(--transition-default); margin: 0 10px; color: var(--primary-text); text-decoration: none; padding: 10px; font-size: 24px;">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p style="font-size: 16px; 
+                      letter-spacing: 3px; 
+                      text-transform: uppercase; 
+                      text-align: center;
+                      margin: 40px 0;
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      gap: 5px;">
+                <span style="opacity: 0.8; font-size: 14px;">Created by</span> 
+                <a href="https://timshot.ru/" 
+                   style="color: #fff; 
+                          text-decoration: none; 
+                          font-weight: 600;
+                          transition: all 0.3s ease;">
+                    TRUBITSYN TIMOFEY
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Mobile menu toggle
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('nav-links');
+            
+            if (mobileMenu && navLinks) {
+                mobileMenu.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    mobileMenu.classList.toggle('active');
+                });
+                
+                // Close menu when clicking on a link
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        mobileMenu.classList.remove('active');
+                    });
+                });
+            }
+
+            // Smooth reveal on scroll with Intersection Observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        // Unobserve after animation to improve performance
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Apply animations to gallery items
+            document.querySelectorAll('.gallery-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(50px)';
+                observer.observe(el);
+            });
+        });
+    </script>
+    
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Демид Полухин",
+        "url": "https://demidpolukhin.ru",
+        "image": "images/demid_winter_portrait.jpg",
+        "jobTitle": ["Режиссер", "Сценарист", "Актер"],
+        "description": "Демид Полухин — режиссер, сценарист и актер. Создает художественные и документальные фильмы, уделяя особое внимание работе с актерами и визуальному языку.",
+        "knowsAbout": ["Кинорежиссура", "Сценарное мастерство", "Актерское искусство"],
+        "sameAs": [
+            "https://vk.com/tagilloff"
+        ],
+        "workExample": [
+            {
+                "@type": "Movie",
+                "name": "Wake Up",
+                "datePublished": "2024"
+            }
+        ]
+    }
+    </script>
+</body>
+</html>
