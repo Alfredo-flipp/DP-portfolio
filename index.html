@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(100480878, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/100480878" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Демид Полухин - режиссер, сценарист и актер. Официальный сайт с портфолио работ, фильмами и фотогалереей.">
@@ -36,7 +52,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: var(--transition-default);
         }
 
         body {
@@ -93,6 +108,7 @@
             text-transform: uppercase;
             position: relative;
             padding: 5px 0;
+            will-change: color;
         }
 
         .nav-links a:not(.btn)::after {
@@ -104,6 +120,7 @@
             height: 2px;
             background-color: var(--primary-text);
             transition: width 0.3s ease;
+            will-change: width;
         }
 
         .nav-links a:hover {
@@ -122,6 +139,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             font-size: 0.85em;
+            will-change: transform, background-color;
         }
 
         .btn:hover {
@@ -162,6 +180,7 @@
             animation: fadeInUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
             letter-spacing: 4px;
             text-shadow: 0 0 20px rgba(255,255,255,0.3);
+            will-change: transform, opacity;
         }
 
         .hero p {
@@ -172,6 +191,7 @@
             font-style: italic;
             opacity: 0.8;
             animation: fadeIn 1.5s ease-out;
+            will-change: transform, opacity;
         }
         
         .image-container {
@@ -194,9 +214,11 @@
             border-radius: 50%;
             overflow: hidden;
             box-shadow: var(--shadow-default);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transition: transform 0.4s ease;
             animation: appear 1.8s ease-out;
             aspect-ratio: 1/1;
+            will-change: transform;
+            transform: translateZ(0);
         }
         
         .image-wrapper::before {
@@ -224,8 +246,7 @@
         }
 
         .image-wrapper:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+            transform: translateY(-8px) scale(1.02) translateZ(0);
         }
 
         .hero-image {
@@ -235,6 +256,8 @@
             object-position: center 25%;
             display: block;
             transition: transform 0.6s ease;
+            will-change: transform;
+            transform: translateZ(0);
         }
 
         .image-wrapper:hover .hero-image {
@@ -242,24 +265,18 @@
         }
 
         @keyframes appear {
-            0% { opacity: 0; transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1); }
+            0% { opacity: 0; transform: scale(0.95) translateZ(0); }
+            100% { opacity: 1; transform: scale(1) translateZ(0); }
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(10px) translateZ(0); }
+            to { opacity: 1; transform: translateY(0) translateZ(0); }
         }
         
         @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px) translateZ(0); }
+            to { opacity: 1; transform: translateY(0) translateZ(0); }
         }
 
         .about {
@@ -307,21 +324,30 @@
             overflow: hidden;
             border-radius: var(--border-radius);
             min-height: 250px;
-        }
-
-        .gallery-item.vertical {
-            grid-row: span 2;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: opacity, transform;
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: transform 0.3s ease;
+            will-change: transform;
+            transform: translateZ(0);
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.3s ease;
+        }
+
+        .gallery-item img.loaded {
+            opacity: 1;
         }
 
         .gallery-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .gallery-item::after {
@@ -336,6 +362,7 @@
             font-size: 18px;
             transform: translateY(100%);
             transition: transform 0.3s ease;
+            will-change: transform;
         }
 
         .gallery-item:hover::after {
@@ -504,39 +531,60 @@
         /* Responsive Styles */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 50px;
+                font-size: 48px;
+                animation: none;
+                opacity: 1;
+                transform: none;
             }
             
             .hero p {
                 font-size: 18px;
-                max-width: 400px;
+                animation: none;
+                opacity: 1;
+                transform: none;
             }
             
             .image-wrapper {
-                max-width: 350px;
+                animation: none;
+                transform: none;
             }
             
-            .image-container {
-                height: 45vh;
+            .image-wrapper:hover {
+                transform: none;
+            }
+            
+            .hero-image {
+                transition: none;
+            }
+            
+            .image-wrapper:hover .hero-image {
+                transform: none;
             }
             
             .gallery {
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .gallery-item.vertical {
-                grid-column: span 2;
-                grid-row: auto;
-                height: 400px;
-            }
-            
-            .gallery-item.horizontal-large {
-                height: 300px;
-                max-width: 100%;
-            }
-            
             .gallery-item {
-                min-height: 250px;
+                opacity: 1;
+                transform: none;
+            }
+            
+            .gallery-item img {
+                opacity: 1;
+                transition: none;
+            }
+            
+            .gallery-item img.loaded {
+                opacity: 1;
+            }
+            
+            .gallery-item::after {
+                transform: none;
+            }
+            
+            .gallery-item:hover::after {
+                transform: none;
             }
             
             .about-content {
@@ -598,15 +646,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .gallery-item.vertical {
-                grid-column: auto;
-                height: 500px;
-            }
-            
-            .gallery-item.horizontal-large {
-                height: 300px;
-            }
-            
             .gallery-item {
                 min-height: 300px;
             }
@@ -635,13 +674,14 @@
 
         .smooth-image {
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: opacity;
         }
         .smooth-image.loaded {
             opacity: 1;
         }
         .gallery .smooth-image {
-            transition-delay: calc(0.1s * var(--index));
+            transition-delay: calc(0.03s * var(--index));
         }
     </style>
 </head>
@@ -856,6 +896,62 @@
                 el.style.transform = 'translateY(50px)';
                 observer.observe(el);
                 el.style.setProperty('--index', index + 1);
+            });
+
+            // Оптимизированная загрузка изображений
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                        }
+                        // Добавляем небольшую задержку перед показом изображения
+                        setTimeout(() => {
+                            img.classList.add('loaded');
+                        }, 50);
+                        imageObserver.unobserve(img);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '50px 0px'
+            });
+
+            // Предварительная загрузка изображений
+            document.querySelectorAll('.smooth-image').forEach(img => {
+                if (img.src) {
+                    const tempImage = new Image();
+                    tempImage.src = img.src;
+                    tempImage.onload = () => {
+                        img.classList.add('loaded');
+                    };
+                }
+                imageObserver.observe(img);
+            });
+
+            // Оптимизированная анимация для галереи
+            const galleryObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        // Добавляем небольшую задержку перед анимацией
+                        setTimeout(() => {
+                            el.style.opacity = '1';
+                            el.style.transform = 'translateY(0)';
+                        }, 50);
+                        galleryObserver.unobserve(el);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '50px 0px'
+            });
+
+            // Применяем анимацию к элементам галереи с задержкой
+            document.querySelectorAll('.gallery-item').forEach((el, index) => {
+                el.style.setProperty('--index', index + 1);
+                galleryObserver.observe(el);
             });
         });
     </script>
